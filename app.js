@@ -7,14 +7,23 @@ function printMessage(username, badgeCount, points){
   const message = `${username} has ${badgeCount} total badge(s) and ${points} points in JavaScript`;
     console.log(message);
 }
-// Connect to the API URL (https://teamtreehouse.com/denyschornyi.json)
 
+
+// Connect to the API URL (https://teamtreehouse.com/denyschornyi.json)
 const https = require('https');
 const request = https.get(`https://teamtreehouse.com/${username}.json`, (res) => {
+    let body = '';
   // Read the data
   res.on('data', d => {
-    console.log(d.toString());
+    body += d.toString();
   });
-// Parse the data
-// Print the data
+
+  res.on('end', d => {
+
+    // Parse the data
+    // Print the data
+    console.dir(body);
+  });
+
+
 });
