@@ -1,3 +1,4 @@
+//Import exported profile.js file
 const profile = require('./profile.js');
 
 const users = process.argv.slice(2);
