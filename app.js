@@ -3,6 +3,8 @@
 
 //Require HTTPS module
 const https = require('https');
+//Require HTTP module
+const http = require('http');
 
 //Print message to console
 function printMessage(username, badgeCount, points){
@@ -36,7 +38,7 @@ function getProfile(username) {
                     }
                 });
            } else{
-               const message = `There was an error getting profile for ${username} (${res.statusCode})`;
+               const message = `There was an error getting profile for ${username} (${http.STATUS_CODES[res.statusCode]})`;
                const statusCodeError = new Error(message);
                printErrorMessage(statusCodeError);
            }
